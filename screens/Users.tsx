@@ -2,14 +2,17 @@ import React, {FC, useEffect, useState} from 'react';
 import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {Routes} from '../routes';
+import {UsersNavigationProps} from '../routes/types';
 
 export const Users: FC = () => {
   const [users, setUsers] = useState<any[]>([]);
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<UsersNavigationProps>();
 
   const navigateToCurrentUser = (userId: string) =>
     navigation.navigate(Routes.CurrentUser, {
       userId,
+      title: 'current user name',
+      pageId: 'current user',
     });
 
   useEffect(() => {
